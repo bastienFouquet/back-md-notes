@@ -90,7 +90,7 @@ module.exports = {
     * https://sailsjs.com/docs/concepts/models-and-orm/model-settings#?migrate *
     *                                                                          *
     ***************************************************************************/
-    migrate: 'safe',
+    // migrate: 'safe',
 
     /***************************************************************************
     *                                                                          *
@@ -321,46 +321,44 @@ module.exports = {
     * This setting is especially important if you are using secure cookies     *
     * (see the `cookies: secure` setting under `session` above) or if your app *
     * relies on knowing the original IP address that a request came from.      *
-    *                                                                          *
-    * (https://sailsjs.com/config/http)                                        *
-    *                                                                          *
-    ***************************************************************************/
+     *                                                                          *
+     * (https://sailsjs.com/config/http)                                        *
+     *                                                                          *
+     ***************************************************************************/
     // trustProxy: true,
 
   },
 
 
-
   /**************************************************************************
-  *                                                                         *
-  * Lift the server on port 80.                                             *
-  * (if deploying behind a proxy, or to a PaaS like Heroku or Deis, you     *
-  * probably don't need to set a port here, because it is oftentimes        *
-  * handled for you automatically.  If you are not sure if you need to set  *
-  * this, just try deploying without setting it and see if it works.)       *
-  *                                                                         *
-  ***************************************************************************/
-  // port: 80,
-
+   *                                                                         *
+   * Lift the server on port 80.                                             *
+   * (if deploying behind a proxy, or to a PaaS like Heroku or Deis, you     *
+   * probably don't need to set a port here, because it is oftentimes        *
+   * handled for you automatically.  If you are not sure if you need to set  *
+   * this, just try deploying without setting it and see if it works.)       *
+   *                                                                         *
+   ***************************************************************************/
+  port: 8080,
 
 
   /**************************************************************************
-  *                                                                         *
-  * Configure an SSL certificate                                            *
-  *                                                                         *
-  * For the safety of your users' data, you should use SSL in production.   *
-  * ...But in many cases, you may not actually want to set it up _here_.    *
-  *                                                                         *
-  * Normally, this setting is only relevant when running a single-process   *
-  * deployment, with no proxy/load balancer in the mix.  But if, on the     *
-  * other hand, you are using a PaaS like Heroku, you'll want to set up     *
-  * SSL in your load balancer settings (usually somewhere in your hosting   *
-  * provider's dashboard-- not here.)                                       *
-  *                                                                         *
-  * > For more information about configuring SSL in Sails, see:             *
-  * > https://sailsjs.com/config/*#?sailsconfigssl                          *
-  *                                                                         *
-  **************************************************************************/
+   *                                                                         *
+   * Configure an SSL certificate                                            *
+   *                                                                         *
+   * For the safety of your users' data, you should use SSL in production.   *
+   * ...But in many cases, you may not actually want to set it up _here_.    *
+   *                                                                         *
+   * Normally, this setting is only relevant when running a single-process   *
+   * deployment, with no proxy/load balancer in the mix.  But if, on the     *
+   * other hand, you are using a PaaS like Heroku, you'll want to set up     *
+   * SSL in your load balancer settings (usually somewhere in your hosting   *
+   * provider's dashboard-- not here.)                                       *
+   *                                                                         *
+   * > For more information about configuring SSL in Sails, see:             *
+   * > https://sailsjs.com/config/*#?sailsconfigssl                          *
+   *                                                                         *
+   **************************************************************************/
   // ssl: undefined,
 
 
