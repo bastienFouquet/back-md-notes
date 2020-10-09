@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "npm run lint && node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js",
+    "test": "npm run lint && node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/data.test.js test/integration/**/*.test.js",
     "lint": "eslint . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
     "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
   },

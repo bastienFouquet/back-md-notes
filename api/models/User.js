@@ -1,4 +1,5 @@
 /**
+ * @model
  * User.js
  */
 module.exports = {

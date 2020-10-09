@@ -35,12 +35,16 @@ module.exports = {
           const token = jwt.sign({
             id: user.id
           }, sails.config.custom.secret);
-          return exits.success(token);
+          delete user.password;
+          return exits.success({
+            token: token,
+            user: user
+          });
         } else {
-          return exits.error('Incorrect password');
+          return exits.success(null);
         }
       } else {
-        return exits.error('No user');
+        return exits.success(null);
       }
     } catch (e) {
       console.error(e);
