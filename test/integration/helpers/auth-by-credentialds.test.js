@@ -10,10 +10,9 @@ describe('authByCredentials#Helper', () => {
     assert(jwt.verify(auth.token, sails.config.custom.secret));
   });
   it('should get an error', async () => {
-    const auth = await sails.helpers.authByCredentials.with({
+    await sails.helpers.authByCredentials.with({
       login: 'test',
       password: '654321'
-    });
-    assert(!auth);
+    }).catch(err => assert(err));
   });
 });

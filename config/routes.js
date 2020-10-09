@@ -40,6 +40,54 @@ module.exports.routes = {
   'post /user/create': {
     controller: 'UserController',
     action: 'create'
-  }
+  },
+
+  /**
+   * NotesController
+   */
+  'post /note/create': {
+    controller: 'NotesController',
+    action: 'create'
+  },
+  'put /note/update/:note': {
+    controller: 'NotesController',
+    action: 'update'
+  },
+  'delete /note/delete/:note': {
+    controller: 'NotesController',
+    action: 'delete'
+  },
+  'get /note/:note': {
+    controller: 'NotesController',
+    action: 'getOne'
+  },
+  'get /notes': {
+    controller: 'NotesController',
+    action: 'getAll'
+  },
+
+  /**
+   * LeafController
+   */
+  'post /leaf/create': {
+    controller: 'LeafController',
+    action: 'create'
+  },
+  'put /leaf/update/:leaf': {
+    controller: 'LeafController',
+    action: 'update'
+  },
+  'delete /leaf/delete/:leaf': {
+    controller: 'LeafController',
+    action: 'delete'
+  },
+  'get /leaf/:leaf': {
+    controller: 'LeafController',
+    action: 'getOne'
+  },
+  'get /leafs': {
+    controller: 'LeafController',
+    action: 'getAll'
+  },
 
 };

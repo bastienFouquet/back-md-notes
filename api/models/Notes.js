@@ -15,7 +15,7 @@ module.exports = {
     },
     user: {
       model: 'user',
-      required: false
+      required: true
     },
     leaf: {
       model: 'leaf',

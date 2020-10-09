@@ -41,10 +41,10 @@ module.exports = {
             user: user
           });
         } else {
-          return exits.success(null);
+          return exits.error('Incorrect password');
         }
       } else {
-        return exits.success(null);
+        return exits.error('No user found');
       }
     } catch (e) {
       console.error(e);

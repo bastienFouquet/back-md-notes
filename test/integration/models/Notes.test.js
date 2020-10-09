@@ -2,7 +2,7 @@ const assert = require('assert');
 describe('Notes#Model', () => {
   it('should create a note', async () => {
     const user = await User.findOne({login: 'test'});
-    const leaf = await Leaf.findOne({label: 'Sails'});
+    const leaf = await Leaf.findOne({label: 'Notes'});
     const note = await Notes.create({
       title: 'create',
       content: '> ^$ù*mé&"&é"yèé&"tv-é"&d"aze"_ryc"-"btètbr"c',
@@ -28,9 +28,7 @@ describe('Notes#Model', () => {
     assert(noteUpdated.leaf);
   });
   it('should get populated note', async () => {
-    const notes = await Notes.find().populateAll().catch(err => assert(!err));
-    assert(notes);
-    const note = notes[0];
+    const note = await Notes.findOne({title: 'notes'}).populateAll();
     assert(note);
     assert(note.title);
     assert(note.user);
@@ -38,5 +36,11 @@ describe('Notes#Model', () => {
     assert(note.content !== undefined);
     assert(note.leaf);
     assert(note.leaf.id);
+  });
+  it('should delete a note', async () => {
+    const isDelete = await Notes.destroyOne({
+      title: 'notes'
+    });
+    assert(isDelete);
   });
 });
