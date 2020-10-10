@@ -12,7 +12,7 @@ module.exports = {
     if (connection) {
       return res.json(connection);
     } else {
-      return res.status(401);
+      return res.badRequest();
     }
   },
   create: async (req, res) => {

@@ -31,10 +31,10 @@ module.exports = {
           delete user.password;
           return exits.success(user);
         } else {
-          return exits.error();
+          return exits.success();
         }
       } else {
-        return exits.error();
+        return exits.success();
       }
     } catch (e) {
       console.error(e);

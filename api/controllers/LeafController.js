@@ -69,6 +69,19 @@ module.exports = {
       console.error(e);
       return res.serverError(e);
     }
+  },
+  getOne: async (req, res) => {
+    try {
+      const leaf = await Leaf.findOne({id: req.params.leaf}).populateAll();
+      if (leaf) {
+        return res.json(leaf);
+      } else {
+        return res.badRequest();
+      }
+    } catch (e) {
+      console.error(e);
+      return res.serverError(e);
+    }
   }
 };
 
