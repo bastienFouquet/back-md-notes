@@ -3,6 +3,7 @@
  * UserController
  */
 
+const {v4} = require('uuid');
 module.exports = {
   auth: async (req, res) => {
     const connection = await sails.helpers.authByCredentials.with({
@@ -18,6 +19,7 @@ module.exports = {
   create: async (req, res) => {
     try {
       const user = await User.create({
+        id: v4(),
         login: req.body.login,
         password: req.body.password
       }).fetch();

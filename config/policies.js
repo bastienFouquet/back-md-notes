@@ -19,10 +19,10 @@ module.exports.policies = {
 
   // '*': true,
 
-  '*': ['apiKeyAuth', 'isConnected'],
+  '*': ['isConnected'],
   UserController: {
-    'auth': ['apiKeyAuth'],
-    'create': ['apiKeyAuth'],
+    'auth': [],
+    'create': [],
   },
 
 };

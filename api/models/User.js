@@ -3,7 +3,13 @@
  * User.js
  */
 module.exports = {
+  tableName: 'user', primaryKey: 'id',
   attributes: {
+    id: {
+      type: 'string',
+      unique: true,
+      required: true
+    },
     login: {
       type: 'string',
       unique: true,

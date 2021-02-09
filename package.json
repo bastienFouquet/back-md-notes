@@ -15,6 +15,8 @@
     "sails-hook-grunt": "^4.0.1",
     "sails-hook-orm": "^3.0.1",
     "sails-hook-sockets": "^2.0.0",
+    "sails-mysql": "^1.0.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "eslint": "7.10.0",
@@ -24,7 +26,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "npm run lint && node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/data.test.js test/integration/**/*.test.js",
+    "test": "npm run lint && node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js",
     "lint": "eslint . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
     "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
   },

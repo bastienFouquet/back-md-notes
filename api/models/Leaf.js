@@ -4,24 +4,30 @@
  */
 
 module.exports = {
+  tableName: 'leaf', primaryKey: 'id',
   attributes: {
+    id: {
+      type: 'string',
+      unique: true,
+      required: true
+    },
     label: {
       type: 'string',
       required: true,
       unique: true
     },
-    icon: {
-      type: 'ref',
-    },
     parentLeaf: {
-      model: 'leaf'
+      model: 'leaf',
+      columnName: 'leafId',
+      required: false
     },
     user: {
       model: 'user',
+      columnName: 'userId',
       required: true
     },
     notes: {
-      collection: 'notes',
+      collection: 'note',
       via: 'leaf'
     }
   },

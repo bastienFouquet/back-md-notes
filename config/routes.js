@@ -43,49 +43,45 @@ module.exports.routes = {
   },
 
   /**
-   * NotesController
+   * NoteController
    */
   'post /notes': {
-    controller: 'NotesController',
+    controller: 'NoteController',
     action: 'create'
   },
   'put /notes/:id': {
-    controller: 'NotesController',
+    controller: 'NoteController',
     action: 'update'
   },
   'delete /notes/:id': {
-    controller: 'NotesController',
+    controller: 'NoteController',
     action: 'delete'
   },
   'get /notes/:id': {
-    controller: 'NotesController',
+    controller: 'NoteController',
     action: 'getOne'
-  },
-  'get /notes': {
-    controller: 'NotesController',
-    action: 'getAll'
   },
 
   /**
    * LeafController
    */
-  'post /leafs': {
+  'post /leaf': {
     controller: 'LeafController',
     action: 'create'
   },
-  'put /leafs/:id': {
+  'put /leaf/:id': {
     controller: 'LeafController',
     action: 'update'
   },
-  'delete /leafs/:id': {
+  'delete /leaf/:id': {
     controller: 'LeafController',
     action: 'delete'
   },
-  'get /leafs/:id': {
+  'get /leaf/:id': {
     controller: 'LeafController',
     action: 'getOne'
   },
-  'get /leafs': {
+  'get /leaf': {
     controller: 'LeafController',
     action: 'getAll'
   },

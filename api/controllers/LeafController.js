@@ -3,15 +3,16 @@
  * LeafController
  */
 
+const {v4} = require('uuid');
 module.exports = {
   create: async (req, res) => {
     try {
-      const user = await sails.helpers.getUserByAuthorization.with({token: req.headers.authorization});
-      if (user && req.body.label) {
+      if (req.body.label) {
         const leaf = await Leaf.create({
+          id: v4(),
           label: req.body.label,
           parentLeaf: req.body.parentLeaf,
-          user: user.id
+          user: req.connection.user.id
         }).fetch();
         if (leaf) {
           return res.json(leaf);
@@ -29,7 +30,7 @@ module.exports = {
   update: async (req, res) => {
     try {
       const leaf = await Leaf.updateOne({
-        id: req.params.leaf
+        id: req.params.id
       }).set({
         label: req.body.label,
         parentLeaf: req.body.parentLeaf,
@@ -46,9 +47,9 @@ module.exports = {
   },
   delete: async (req, res) => {
     try {
-      const isDeleted = await Leaf.destroyOne({
-        id: req.params.leaf
-      });
+      const isDeleted = await Leaf.updateOne({
+        id: req.params.id
+      }).set({deletedAt: new Date().toISOString()});
       if (isDeleted) {
         return res.ok();
       } else {
@@ -61,7 +62,10 @@ module.exports = {
   },
   getAll: async (req, res) => {
     try {
-      const leafs = await Leaf.find().populateAll();
+      const leafs = await Leaf.find({
+        user: req.connection.user.id,
+        deletedAt: null
+      }).populate('parentLeaf').populate('notes');
       if (leafs) {
         return res.json(leafs);
       }
@@ -72,7 +76,8 @@ module.exports = {
   },
   getOne: async (req, res) => {
     try {
-      const leaf = await Leaf.findOne({id: req.params.leaf}).populateAll();
+      const leaf = await Leaf.findOne({id: req.params.id})
+        .populate('parentLeaf').populate('notes');
       if (leaf) {
         return res.json(leaf);
       } else {

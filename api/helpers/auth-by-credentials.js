@@ -33,7 +33,8 @@ module.exports = {
       if (user) {
         if (bcrypt.compareSync(inputs.password, user.password)) {
           const token = jwt.sign({
-            id: user.id
+            id: user.id,
+            login: user.login
           }, sails.config.custom.secret);
           delete user.password;
           return exits.success({

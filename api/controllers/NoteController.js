@@ -1,18 +1,19 @@
 /**
  * @controller
- * NotesController
+ * NoteController
  */
 
+const {v4} = require('uuid');
 module.exports = {
   create: async (req, res) => {
     try {
-      const user = await sails.helpers.getUserByAuthorization.with({token: req.headers.authorization});
-      if (user && req.body.leaf && req.body.title) {
-        const note = await Notes.create({
+      if (req.body.leaf && req.body.title) {
+        const note = await Note.create({
+          id: v4(),
           title: req.body.title,
           content: req.body.content,
           leaf: req.body.leaf,
-          user: user.id
+          user: req.connection.user.id
         }).fetch();
         if (note) {
           return res.json(note);
@@ -29,8 +30,8 @@ module.exports = {
   },
   update: async (req, res) => {
     try {
-      const note = await Notes.updateOne({
-        id: req.params.note
+      const note = await Note.updateOne({
+        id: req.params.id
       }).set({
         title: req.body.title,
         content: req.body.content,
@@ -48,9 +49,9 @@ module.exports = {
   },
   delete: async (req, res) => {
     try {
-      const isDeleted = await Notes.destroyOne({
-        id: req.params.note
-      });
+      const isDeleted = await Note.updateOne({
+        id: req.params.id
+      }).set({deletedAt: new Date().toISOString()});
       if (isDeleted) {
         return res.ok();
       } else {
@@ -61,21 +62,10 @@ module.exports = {
       return res.serverError(e);
     }
   },
-  getAll: async (req, res) => {
-    try {
-      const notes = await Notes.find();
-      if (notes) {
-        return res.json(notes);
-      }
-    } catch (e) {
-      console.error(e);
-      return res.serverError(e);
-    }
-  },
   getOne: async (req, res) => {
     try {
-      const note = await Notes.findOne({
-        id: req.params.note
+      const note = await Note.findOne({
+        id: req.params.id
       });
       if (note) {
         return res.json(note);
