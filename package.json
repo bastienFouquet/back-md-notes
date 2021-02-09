@@ -15,7 +15,6 @@
     "sails-hook-grunt": "^4.0.1",
     "sails-hook-orm": "^3.0.1",
     "sails-hook-sockets": "^2.0.0",
-    "sails-mongo": "^1.2.0"
   },
   "devDependencies": {
     "eslint": "7.10.0",

@@ -11,13 +11,13 @@
 module.exports.routes = {
 
   /***************************************************************************
-  *                                                                          *
-  * Make the view located at `views/homepage.ejs` your home page.            *
-  *                                                                          *
-  * (Alternatively, remove this and add an `index.html` file in your         *
-  * `assets` directory)                                                      *
-  *                                                                          *
-  ***************************************************************************/
+   *                                                                          *
+   * Make the view located at `views/homepage.ejs` your home page.            *
+   *                                                                          *
+   * (Alternatively, remove this and add an `index.html` file in your         *
+   * `assets` directory)                                                      *
+   *                                                                          *
+   ***************************************************************************/
 
   /***************************************************************************
    *                                                                          *
@@ -33,11 +33,11 @@ module.exports.routes = {
   /**
    * UserController
    */
-  'post /user/auth': {
+  'post /auth': {
     controller: 'UserController',
     action: 'auth'
   },
-  'post /user/create': {
+  'post /users': {
     controller: 'UserController',
     action: 'create'
   },
@@ -45,19 +45,19 @@ module.exports.routes = {
   /**
    * NotesController
    */
-  'post /note/create': {
+  'post /notes': {
     controller: 'NotesController',
     action: 'create'
   },
-  'put /note/update/:note': {
+  'put /notes/:id': {
     controller: 'NotesController',
     action: 'update'
   },
-  'delete /note/delete/:note': {
+  'delete /notes/:id': {
     controller: 'NotesController',
     action: 'delete'
   },
-  'get /note/:note': {
+  'get /notes/:id': {
     controller: 'NotesController',
     action: 'getOne'
   },
@@ -69,19 +69,19 @@ module.exports.routes = {
   /**
    * LeafController
    */
-  'post /leaf/create': {
+  'post /leafs': {
     controller: 'LeafController',
     action: 'create'
   },
-  'put /leaf/update/:leaf': {
+  'put /leafs/:id': {
     controller: 'LeafController',
     action: 'update'
   },
-  'delete /leaf/delete/:leaf': {
+  'delete /leafs/:id': {
     controller: 'LeafController',
     action: 'delete'
   },
-  'get /leaf/:leaf': {
+  'get /leafs/:id': {
     controller: 'LeafController',
     action: 'getOne'
   },
