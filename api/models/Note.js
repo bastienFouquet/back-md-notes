@@ -17,7 +17,7 @@ module.exports = {
     },
     content: {
       type: 'string',
-      required: true,
+      allowNull: true,
     },
     user: {
       model: 'user',

@@ -21,6 +21,10 @@ module.exports = {
       columnName: 'leafId',
       required: false
     },
+    children: {
+      collection: 'leaf',
+      via: 'parentLeaf'
+    },
     user: {
       model: 'user',
       columnName: 'userId',

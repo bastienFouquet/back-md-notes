@@ -51,7 +51,7 @@ module.exports = {
     try {
       const isDeleted = await Note.updateOne({
         id: req.params.id
-      }).set({deletedAt: new Date().toISOString()});
+      }).set({deletedAt: new Date().toISOString().replace('Z', '')});
       if (isDeleted) {
         return res.ok();
       } else {

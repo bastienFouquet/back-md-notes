@@ -49,7 +49,7 @@ module.exports = {
     try {
       const isDeleted = await Leaf.updateOne({
         id: req.params.id
-      }).set({deletedAt: new Date().toISOString()});
+      }).set({deletedAt: new Date().toISOString().replace('Z', '')});
       if (isDeleted) {
         return res.ok();
       } else {
@@ -60,14 +60,15 @@ module.exports = {
       return res.serverError(e);
     }
   },
-  getAll: async (req, res) => {
+  getAllParents: async (req, res) => {
     try {
-      const leafs = await Leaf.find({
+      const tree = await Leaf.find({
         user: req.connection.user.id,
+        parentLeaf: null,
         deletedAt: null
-      }).populate('parentLeaf').populate('notes');
-      if (leafs) {
-        return res.json(leafs);
+      });
+      if (tree) {
+        return res.json(tree);
       }
     } catch (e) {
       console.error(e);
@@ -76,8 +77,9 @@ module.exports = {
   },
   getOne: async (req, res) => {
     try {
-      const leaf = await Leaf.findOne({id: req.params.id})
-        .populate('parentLeaf').populate('notes');
+      const leaf = await Leaf.findOne({id: req.params.id}).populate('notes').populate('children');
+      leaf.notes = leaf.notes.filter(el => el.deletedAt === null);
+      leaf.children = leaf.children.filter(el => el.deletedAt === null);
       if (leaf) {
         return res.json(leaf);
       } else {

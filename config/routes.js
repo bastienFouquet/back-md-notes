@@ -81,9 +81,9 @@ module.exports.routes = {
     controller: 'LeafController',
     action: 'getOne'
   },
-  'get /leaf': {
+  'get /tree': {
     controller: 'LeafController',
-    action: 'getAll'
+    action: 'getAllParents'
   },
 
 };
