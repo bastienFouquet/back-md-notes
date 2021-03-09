@@ -47,9 +47,9 @@ module.exports = {
   },
   delete: async (req, res) => {
     try {
-      const isDeleted = await Leaf.updateOne({
+      const isDeleted = await Leaf.destroyOne({
         id: req.params.id
-      }).set({deletedAt: new Date().toISOString().replace('Z', '')});
+      });
       if (isDeleted) {
         return res.ok();
       } else {
@@ -64,8 +64,7 @@ module.exports = {
     try {
       const tree = await Leaf.find({
         user: req.connection.user.id,
-        parentLeaf: null,
-        deletedAt: null
+        parentLeaf: null
       });
       if (tree) {
         return res.json(tree);
@@ -78,8 +77,6 @@ module.exports = {
   getOne: async (req, res) => {
     try {
       const leaf = await Leaf.findOne({id: req.params.id}).populate('notes').populate('children');
-      leaf.notes = leaf.notes.filter(el => el.deletedAt === null);
-      leaf.children = leaf.children.filter(el => el.deletedAt === null);
       if (leaf) {
         return res.json(leaf);
       } else {

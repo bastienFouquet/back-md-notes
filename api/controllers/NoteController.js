@@ -49,9 +49,9 @@ module.exports = {
   },
   delete: async (req, res) => {
     try {
-      const isDeleted = await Note.updateOne({
+      const isDeleted = await Note.destroyOne({
         id: req.params.id
-      }).set({deletedAt: new Date().toISOString().replace('Z', '')});
+      });
       if (isDeleted) {
         return res.ok();
       } else {

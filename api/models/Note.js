@@ -26,7 +26,6 @@ module.exports = {
     },
     leaf: {
       model: 'leaf',
-      required: true,
       columnName: 'leafId'
     }
   },

@@ -69,9 +69,9 @@ module.exports.models = {
    ***************************************************************************/
 
   attributes: {
-    createdAt: {type: 'ref', columnType: 'datetime', autoCreatedAt: true},
-    updatedAt: {type: 'ref', columnType: 'datetime', autoUpdatedAt: true},
-    deletedAt: {type: 'ref', columnType: 'datetime'},
+    //createdAt: {type: 'ref', columnType: 'datetime', autoCreatedAt: true},
+    //updatedAt: {type: 'ref', columnType: 'datetime', autoUpdatedAt: true},
+    //deletedAt: {type: 'ref', columnType: 'datetime'},
     //--------------------------------------------------------------------------
     //  /\   Using MongoDB?
     //  ||   Replace `id` above with this instead:

@@ -48,9 +48,9 @@ module.exports.datastores = {
      *    (See https://sailsjs.com/config/datastores for help.)                 *
      *                                                                          *
      ***************************************************************************/
-    adapter: 'sails-mysql',
-    url: 'mysql://root@localhost:3306/notes',
-
+    adapter: 'sails-sqlite3',
+    //url: 'mysql://root@localhost:3306/notes',
+    filename: 'notes.db',
   },
 
 
