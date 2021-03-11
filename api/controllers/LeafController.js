@@ -47,6 +47,8 @@ module.exports = {
   },
   delete: async (req, res) => {
     try {
+      await Note.destroy({leaf: req.params.id});
+      await Leaf.destroy({parentLeaf: req.params.id});
       const isDeleted = await Leaf.destroyOne({
         id: req.params.id
       });
@@ -68,6 +70,8 @@ module.exports = {
       });
       if (tree) {
         return res.json(tree);
+      } else {
+        return res.badRequest();
       }
     } catch (e) {
       console.error(e);

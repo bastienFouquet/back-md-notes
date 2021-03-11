@@ -69,6 +69,8 @@ module.exports = {
       });
       if (note) {
         return res.json(note);
+      } else {
+        return res.badRequest();
       }
     } catch (e) {
       console.error(e);
